@@ -1,0 +1,15 @@
+{
+  "bucket_name": "mineru",
+  "models-dir": "c:/Users/Not Me/OneDrive/Desktop/gpu_viva/models/vision/mineru/models",
+  "device-mode": "cpu",
+  "layout-config": {
+    "model": "doclayout_yolo"
+  },
+  "table-config": {
+    "is_enable": false,
+    "max_time": 400
+  },
+  "formula-config": {
+    "is_enable": false
+  }
+}

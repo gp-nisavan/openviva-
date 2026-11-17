@@ -1,0 +1,15 @@
+{
+  "device_mode": "cuda",
+  "models_dir": "models/vision/mineru",
+  "layout_model": "layoutlmv3",
+  "formula_enable": true,
+  "table_config": {
+    "enable_table_parsing": true,
+    "model": "rapid_ocr"
+  },
+  "pdf_parse_config": {
+    "parse_method": "auto",
+    "output_dir": "storage/toc_output",
+    "extract_toc_only": true
+  }
+}

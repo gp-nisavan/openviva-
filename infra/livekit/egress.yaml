@@ -1,0 +1,22 @@
+# ==========================================
+# OPEN-VIVA LIVEKIT EGRESS CONFIGURATION
+# Connects to LiveKit SFU, Redis Job Queue & MinIO S3
+# ==========================================
+
+api_key: devkey
+api_secret: secret_openviva_key_2026_at_least_32_chars!
+ws_url: ws://openviva-livekit:7880
+
+redis:
+  address: openviva-redis:6379
+
+s3:
+  endpoint: http://minio:9000
+  access_key: minioadmin
+  secret: minioadmin
+  bucket: viva-recordings
+  force_path_style: true
+
+logging:
+  level: info
+

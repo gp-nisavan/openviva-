@@ -1,0 +1,85 @@
+# ==============================================================================
+# OpenViva Production .gitignore - Bulletproof Security & Confidentiality Rules
+# ==============================================================================
+
+# 1. Environment & Secrets (CRITICAL)
+.env
+.env*.local
+.env.production
+.env.development
+.env.staging
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*.p12
+
+# 2. Production Databases & SQLite Journals (Contains Student PII & Scores)
+storage/openviva.db*
+storage/db.sqlite3*
+data/openviva.db*
+web/openviva.db*
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# 3. Biometrics, Student Keyframes & Media (Student PII)
+storage/biometrics/
+storage/recordings/
+storage/uploads/
+storage/toc_output/
+*.wav
+*.mp3
+*.m4a
+*.flac
+*.aac
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.mp4
+*.webm
+
+# 4. Heavy AI Models & Pretrained Weights (> 50MB - 1.5GB)
+models/
+checkpoints/
+*.bin
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.sst
+*.tflite
+
+# 5. Virtual Environments & Dependencies
+agent_env/
+.venv*/
+venv/
+node_modules/
+.pnpm-store/
+.npm/
+
+# 6. Build Outputs & Next.js Caches
+web/.next/
+web/out/
+.cache/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 7. Runtime Logs & Temporary Scratch
+*.log
+retention.log
+scratch/
+tmp/
+temp/
+.DS_Store
+Thumbs.db
+
+bin/
+web/dist_test/
+*.tsbuildinfo

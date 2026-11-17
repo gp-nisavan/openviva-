@@ -1,0 +1,52 @@
+services:
+  openviva-redis:
+    image: redis:7-alpine
+    container_name: openviva-redis
+    restart: unless-stopped
+    command: redis-server --save 60 1 --loglevel warning
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - openviva-net
+
+  openviva-livekit:
+    image: livekit/livekit-server:latest
+    container_name: openviva-livekit
+    restart: unless-stopped
+    command: --config /etc/livekit.yaml
+    ports:
+      - "7880:7880"
+      - "7881:7881"
+      - "50000-50200:50000-50200/udp"
+    volumes:
+      - ./livekit.yaml:/etc/livekit.yaml:ro
+    depends_on:
+      - openviva-redis
+    networks:
+      - openviva-net
+
+  openviva-egress:
+    image: livekit/egress:latest
+    container_name: openviva-egress
+    restart: unless-stopped
+    environment:
+      - EGRESS_CONFIG_FILE=/etc/egress.yaml
+    volumes:
+      - ./egress.yaml:/etc/egress.yaml:ro
+    cap_add:
+      - SYS_ADMIN
+    shm_size: "2gb"
+    depends_on:
+      - openviva-redis
+      - openviva-livekit
+    networks:
+      - openviva-net
+
+networks:
+  openviva-net:
+    name: openviva-net
+
+volumes:
+  redis_data:
